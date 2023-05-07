@@ -11,12 +11,12 @@ router.use("/api", static(path.resolve(__dirname, "../../static/img")));
 
 // 上传图片接口
 router.post("/upload", (req, res) => {
-  return handleUpload(req, res);
+  handleUpload(req, res);
 });
 
 // 随机返回图片
 router.get("/api", (req, res) => {
-  return getImg(res);
+  getImg(res);
 });
 
 module.exports = router;

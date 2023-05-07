@@ -13,6 +13,7 @@ const handleUpload = (req, res) => {
       }
       return handler(res, err.message);
     } else if (err) {
+      throw err;
       return handler(res, err);
     }
 

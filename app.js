@@ -6,16 +6,22 @@ const handler = require("./src/utils/handler");
 
 dotenv.config();
 
+// 根路由
+app.all("/", (req, res) => {
+  let msg = "Successful deployment";
+
+  handler(res, msg, true);
+});
+
+// 路由处理
 app.use("/", routers);
 
-app.all("*", (req, res) => {
-  const data = {
-    status: "Successful deployment",
-  };
-  let msg = "No response";
+// 404处理
+app.use((req, res) => {
+  let msg = "Disallow access";
 
-  res.status(200);
-  return handler(res, msg, data);
+  res.status(404);
+  handler(res, msg);
 });
 
 module.exports = app;
